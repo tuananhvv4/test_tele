@@ -1873,14 +1873,14 @@ async def handle_menu_button(message: types.Message):
     
     if not products:
         await message.answer(
-            "🛍️ <b>SẢN PHẨM</b>\n\n❌ Chưa có sản phẩm nào!",
+            "🛍️ <b>SẢN PHẨM</b>\n\n<tg-emoji emoji-id='5210952531676504517'>❌</tg-emoji> Chưa có sản phẩm nào!",
             parse_mode=ParseMode.HTML,
             reply_markup=get_main_keyboard()
         )
         return
     
     await message.answer(
-        "🛍️ <b>DANH SÁCH SẢN PHẨM</b>\n\n👇 Chọn sản phẩm để mua:",
+        "🛍️ <b>DANH SÁCH SẢN PHẨM</b>\n\n<tg-emoji emoji-id='6188461232542981576'>👇</tg-emoji> Chọn sản phẩm để mua:",
         parse_mode=ParseMode.HTML,
         reply_markup=get_products_keyboard_all()
     )
