@@ -1886,7 +1886,7 @@ async def handle_menu_button(message: types.Message):
     )
 
 # Handler cho nút Reply Keyboard "Liên hệ Admin"
-@dp.message(F.text == "📞 Liên hệ Admin")
+@dp.message(F.text == "<tg-emoji emoji-id="5318779098686826724">📞</tg-emoji> Liên hệ Admin!")
 async def handle_contact_button(message: types.Message):
     """Xử lý khi nhấn nút Liên hệ Admin"""
     zalo_link = get_config('zalo_link', os.getenv('ZALO_LINK', ''))
