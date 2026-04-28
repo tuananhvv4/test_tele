@@ -1736,7 +1736,7 @@ def get_main_keyboard():
             InlineKeyboardButton(text="📋 Lịch sử", callback_data="my_orders")
         ],
         [
-            InlineKeyboardButton(text="📞 Liên hệ Admin", callback_data="contact_admin")
+            InlineKeyboardButton(text="📞 Liên hệ Admin", callback_data="contact_admin", parse_mode=ParseMode.HTML, icon_custom_emoji_id="5318779098686826724")
         ]
     ])
     return keyboard
@@ -1860,7 +1860,7 @@ async def cmd_start(message: types.Message):
     
     keyboard = get_products_keyboard_all()
     await message.answer(
-        "🛍️ <b>DANH SÁCH SẢN PHẨM</b>\n\n👇 Chọn sản phẩm để mua:",
+        '<tg-emoji emoji-id="5854776233950187351">📋</tg-emoji> <b>DANH SÁCH SẢN PHẨM</b>\n\n👇 Chọn sản phẩm để mua:',
         parse_mode=ParseMode.HTML,
         reply_markup=keyboard
     )
@@ -1873,20 +1873,20 @@ async def handle_menu_button(message: types.Message):
     
     if not products:
         await message.answer(
-            "🛍️ <b>SẢN PHẨM</b>\n\n<tg-emoji emoji-id='5210952531676504517'>❌</tg-emoji> Chưa có sản phẩm nào!",
+            "🛍️ <b>SẢN PHẨM</b>\n\n<tg-emoji emoji-id=\"5210952531676504517\">❌</tg-emoji> Chưa có sản phẩm nào!",
             parse_mode=ParseMode.HTML,
             reply_markup=get_main_keyboard()
         )
         return
     
     await message.answer(
-        "🛍️ <b>DANH SÁCH SẢN PHẨM</b>\n\n<tg-emoji emoji-id='6188461232542981576'>👇</tg-emoji> Chọn sản phẩm để mua:",
+        "🛍️ <b>DANH SÁCH SẢN PHẨM</b>\n\n<tg-emoji emoji-id=\"6188461232542981576\">👇</tg-emoji> Chọn sản phẩm để mua:",
         parse_mode=ParseMode.HTML,
         reply_markup=get_products_keyboard_all()
     )
 
 # Handler cho nút Reply Keyboard "Liên hệ Admin"
-@dp.message(F.text == '<tg-emoji emoji-id="5318779098686826724">📞</tg-emoji> Liên hệ Admin!')
+@dp.message(F.text == "📞 Liên hệ Admin")
 async def handle_contact_button(message: types.Message):
     """Xử lý khi nhấn nút Liên hệ Admin"""
     zalo_link = get_config('zalo_link', os.getenv('ZALO_LINK', ''))
